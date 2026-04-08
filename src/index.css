@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Figtree', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Subtle dot-grid background for the canvas zone */
+  .dot-grid {
+    background-image: radial-gradient(circle, #21262D 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Scrollbar styling for sidebar */
+  .sidebar-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #D1CFC8 transparent;
+  }
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .sidebar-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: #D1CFC8;
+    border-radius: 2px;
+  }
+
+  /* Marker ring pulse */
+  .marker-ring {
+    animation: ringPulse 2.5s ease-in-out infinite;
+  }
+
+  /* Canvas upload overlay */
+  .upload-zone {
+    background: repeating-linear-gradient(
+      -45deg,
+      #161B22,
+      #161B22 6px,
+      #1C2128 6px,
+      #1C2128 12px
+    );
+  }
+}
+
+@layer utilities {
+  /* Amber shimmer on the stamp button */
+  .amber-shimmer {
+    background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #D97706 100%);
+    background-size: 200% 200%;
+    animation: shimmerShift 3s ease infinite;
+  }
+}
+
+@keyframes ringPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmerShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
